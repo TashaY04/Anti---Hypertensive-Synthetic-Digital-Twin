@@ -120,7 +120,7 @@ function App() {
             exit="exit"
             transition={pageTransition}
           >
-            <ResultsPage results={results} onNewAssessment={goToWelcome} />
+            <ResultsPage results={results} userData={userData} onNewAssessment={goToWelcome} />
           </motion.div>
         )}
       </AnimatePresence>

@@ -25,11 +25,38 @@ const AssessmentPage = ({ onSubmit }) => {
   });
 
   const handleChange = (field, value) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => {
+      if (field === 'gender') {
+        return {
+          ...prev,
+          gender: value,
+          pregnancy: value === 'male' ? false : prev.pregnancy
+        };
+      }
+      return { ...prev, [field]: value };
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (
+      formData.age < 13 || formData.age > 100 ||
+      formData.height < 120 || formData.height > 220 ||
+      formData.weight < 35 || formData.weight > 250 ||
+      formData.systolic < 80 || formData.systolic > 260 ||
+      formData.diastolic < 40 || formData.diastolic > 160
+    ) {
+      alert('Please enter values within valid medical ranges.');
+      return;
+    }
+    if (formData.diastolic >= formData.systolic) {
+      alert('Diastolic BP must be lower than systolic BP.');
+      return;
+    }
+    if (formData.gender === 'male' && formData.pregnancy) {
+      alert('Pregnancy cannot be selected for male patients.');
+      return;
+    }
     onSubmit(formData);
   };
 
@@ -50,7 +77,7 @@ const AssessmentPage = ({ onSubmit }) => {
           animate={{ opacity: 1, y: 0 }}
           className="assessment-header"
         >
-          <h1>✨ Complete Health Assessment</h1>
+          <h1>Complete Health Assessment</h1>
           <p>Your personalized treatment journey starts here</p>
         </motion.div>
 
@@ -72,11 +99,11 @@ const AssessmentPage = ({ onSubmit }) => {
                 <div className="radio-group horizontal">
                   <label className="radio-option">
                     <input type="radio" checked={formData.gender === 'male'} onChange={() => handleChange('gender', 'male')} />
-                    <span>👨 Male</span>
+                    <span>Male</span>
                   </label>
                   <label className="radio-option">
                     <input type="radio" checked={formData.gender === 'female'} onChange={() => handleChange('gender', 'female')} />
-                    <span>👩 Female</span>
+                    <span>Female</span>
                   </label>
                 </div>
               </div>
@@ -84,11 +111,11 @@ const AssessmentPage = ({ onSubmit }) => {
               <div className="form-row">
                 <div className="form-group">
                   <label>Weight (kg)</label>
-                  <input type="number" value={formData.weight} onChange={(e) => handleChange('weight', parseFloat(e.target.value))} />
+                  <input type="number" value={formData.weight} onChange={(e) => handleChange('weight', parseFloat(e.target.value))} min="35" max="250" step="0.1" />
                 </div>
                 <div className="form-group">
                   <label>Height (cm)</label>
-                  <input type="number" value={formData.height} onChange={(e) => handleChange('height', parseFloat(e.target.value))} />
+                  <input type="number" value={formData.height} onChange={(e) => handleChange('height', parseFloat(e.target.value))} min="120" max="220" step="0.1" />
                 </div>
               </div>
             </div>
@@ -104,11 +131,11 @@ const AssessmentPage = ({ onSubmit }) => {
               <div className="form-row">
                 <div className="form-group">
                   <label>Systolic BP (mmHg)</label>
-                  <input type="number" value={formData.systolic} onChange={(e) => handleChange('systolic', parseInt(e.target.value))} />
+                  <input type="number" value={formData.systolic} onChange={(e) => handleChange('systolic', parseInt(e.target.value))} min="80" max="260" />
                 </div>
                 <div className="form-group">
                   <label>Diastolic BP (mmHg)</label>
-                  <input type="number" value={formData.diastolic} onChange={(e) => handleChange('diastolic', parseInt(e.target.value))} />
+                  <input type="number" value={formData.diastolic} onChange={(e) => handleChange('diastolic', parseInt(e.target.value))} min="40" max="160" />
                 </div>
               </div>
             </div>
@@ -208,15 +235,15 @@ const AssessmentPage = ({ onSubmit }) => {
                 <div className="radio-group">
                   <label className="radio-option">
                     <input type="radio" checked={formData.alcohol === 0} onChange={() => handleChange('alcohol', 0)} />
-                    <span>🚫 None</span>
+                    <span>None</span>
                   </label>
                   <label className="radio-option">
                     <input type="radio" checked={formData.alcohol === 1} onChange={() => handleChange('alcohol', 1)} />
-                    <span>🍷 Moderate (1-2 drinks occasionally)</span>
+                    <span>Moderate (1-2 drinks occasionally)</span>
                   </label>
                   <label className="radio-option">
                     <input type="radio" checked={formData.alcohol === 2} onChange={() => handleChange('alcohol', 2)} />
-                    <span>🍺 Heavy (3+ drinks regularly)</span>
+                    <span>Heavy (3+ drinks regularly)</span>
                   </label>
                 </div>
               </div>
@@ -224,7 +251,7 @@ const AssessmentPage = ({ onSubmit }) => {
               <div className="checkbox-group">
                 <label className="checkbox-label">
                   <input type="checkbox" checked={formData.smoker} onChange={(e) => handleChange('smoker', e.target.checked)} />
-                  <span>🚬 I smoke tobacco</span>
+                  <span>I smoke tobacco</span>
                 </label>
               </div>
             </div>
@@ -239,14 +266,19 @@ const AssessmentPage = ({ onSubmit }) => {
             <div className="card-content">
               <div className="checkbox-group">
                 {[
-                  { key: 'diabetes', label: 'Diabetes', icon: '💉' },
-                  { key: 'kidney', label: 'Kidney Disease', icon: '🫘' },
-                  { key: 'depression', label: 'Depression/Anxiety', icon: '🧠' },
-                  { key: 'pregnancy', label: 'Pregnancy (if applicable)', icon: '🤰' }
-                ].map(({ key, label, icon }) => (
+                  { key: 'diabetes', label: 'Diabetes' },
+                  { key: 'kidney', label: 'Kidney Disease' },
+                  { key: 'depression', label: 'Depression/Anxiety' },
+                  { key: 'pregnancy', label: 'Pregnancy (if applicable)' }
+                ].map(({ key, label }) => (
                   <label key={key} className="checkbox-label">
-                    <input type="checkbox" checked={formData[key]} onChange={(e) => handleChange(key, e.target.checked)} />
-                    <span>{icon} {label}</span>
+                    <input
+                      type="checkbox"
+                      checked={formData[key]}
+                      disabled={key === 'pregnancy' && formData.gender === 'male'}
+                      onChange={(e) => handleChange(key, e.target.checked)}
+                    />
+                    <span>{label}</span>
                   </label>
                 ))}
               </div>
@@ -263,7 +295,7 @@ const AssessmentPage = ({ onSubmit }) => {
             type="submit"
             className="submit-button"
           >
-            ✨ Get My Personalized Treatment Plan
+            Get My Personalized Treatment Plan
           </motion.button>
         </form>
       </div>

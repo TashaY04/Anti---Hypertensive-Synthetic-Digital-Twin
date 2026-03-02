@@ -1,12 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+:root {
+  --bg-main: linear-gradient(140deg, #0f766e 0%, #0f766e 20%, #0ea5a0 55%, #f0f9f4 100%);
+  --bg-soft: linear-gradient(160deg, #d9f6ef 0%, #f2fbf8 100%);
+  --surface: #ffffff;
+  --surface-muted: #f6fbf8;
+  --text-main: #0f172a;
+  --text-soft: #334155;
+  --line: #d7ebe3;
+  --brand: #0f766e;
+  --brand-strong: #115e59;
+  --accent: #f97316;
+  --success: #16a34a;
+  --shadow-soft: 0 14px 34px rgba(15, 118, 110, 0.12);
+  --shadow-strong: 0 20px 40px rgba(15, 118, 110, 0.22);
+}
+
 body {
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family: 'Manrope', 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
+  color: var(--text-main);
+  background: var(--bg-main);
 }
 
 #root {

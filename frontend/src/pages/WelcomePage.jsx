@@ -60,7 +60,7 @@ const WelcomePage = ({ onStart }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.3, duration: 0.8 }}
-          whileHover={{ scale: 1.05, boxShadow: '0 20px 40px rgba(8, 145, 178, 0.4)' }}
+          whileHover={{ scale: 1.05, boxShadow: '0 20px 40px rgba(249, 115, 22, 0.42)' }}
           whileTap={{ scale: 0.95 }}
           onClick={onStart}
           className="start-button"
@@ -74,7 +74,7 @@ const WelcomePage = ({ onStart }) => {
           transition={{ delay: 1.5, duration: 0.8 }}
           className="welcome-footer"
         >
-          Takes 3-5 minutes  •  Completely confidential
+          Takes 3-5 minutes - Completely confidential
         </motion.p>
       </div>
     </div>
