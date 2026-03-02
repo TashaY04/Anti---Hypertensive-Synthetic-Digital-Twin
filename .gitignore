@@ -1,0 +1,21 @@
+# Node
+node_modules/
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# ML models
+*.pkl
+*.h5
+*.pt
+*.joblib
+backend/models/
+
+# Build
+dist/
+build/
+
+# OS
+.DS_Store

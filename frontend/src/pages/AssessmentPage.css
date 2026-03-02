@@ -1,0 +1,139 @@
+.assessment-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+  padding: 40px 20px;
+}
+
+.assessment-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.assessment-header {
+  text-align: center;
+  color: white;
+  margin-bottom: 40px;
+}
+
+.assessment-header h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.assessment-header p {
+  font-size: 18px;
+  opacity: 0.95;
+}
+
+.assessment-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  margin-bottom: 20px;
+  transition: all 0.3s;
+}
+
+.assessment-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.2);
+}
+
+.card-header {
+  background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+  color: white;
+  padding: 25px 30px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.card-content {
+  padding: 35px;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #0e7490;
+  font-size: 15px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 16px;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #0891b2;
+  box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.1);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.radio-option,
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.radio-option:hover,
+.checkbox-label:hover {
+  border-color: #0891b2;
+  background: #f0fdfa;
+}
+
+.submit-button {
+  width: 100%;
+  max-width: 500px;
+  margin: 30px auto 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #14b8a6 0%, #0891b2 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'Poppins', sans-serif;
+  display: block;
+}
+
+.submit-button:hover {
+  transform: scale(1.02);
+  box-shadow: 0 15px 40px rgba(20, 184, 166, 0.4);
+}

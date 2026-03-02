@@ -1,0 +1,92 @@
+.welcome-page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+}
+
+.welcome-container {
+  text-align: center;
+  color: white;
+  max-width: 700px;
+  padding: 50px;
+}
+
+.welcome-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.2);
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+}
+
+.welcome-container h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.welcome-subtitle {
+  font-size: 22px;
+  font-weight: 500;
+  opacity: 0.95;
+  margin-bottom: 60px;
+}
+
+.welcome-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-bottom: 60px;
+}
+
+.feature-card {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  padding: 30px 20px;
+  border-radius: 16px;
+  transition: all 0.3s;
+}
+
+.feature-card:hover {
+  background: rgba(255,255,255,0.25);
+  transform: translateY(-5px);
+}
+
+.feature-card h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.feature-card p {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.start-button {
+  background: white;
+  color: #0891b2;
+  border: none;
+  padding: 20px 60px;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'Poppins', sans-serif;
+}
+
+.welcome-footer {
+  margin-top: 30px;
+  font-size: 14px;
+  opacity: 0.85;
+}
