@@ -139,6 +139,9 @@ Returns:
 ### `GET /api/health`
 Model/service health check.
 
+## Author Details :
+Tanisha - Osmania University
+
 ## Notes
 
 - Restart backend after code changes in `backend/app.py`.
